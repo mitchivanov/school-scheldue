@@ -22,12 +22,16 @@ class Class(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String, nullable=False, unique=True)
     created_at = Column(DateTime, nullable=False)
+    
+    schedules = relationship("Schedule", back_populates="_class")
 
 class Subject(Base):
     __tablename__ = "subjects"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String, nullable=False, unique=True)
+    
+    schedules = relationship("Schedule", back_populates="_subject")
 
 class Schedule(Base):
     __tablename__ = "schedules"
